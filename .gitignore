@@ -1,3 +1,5 @@
 *.swp
 *__
+*.jpeg
+*/
 config.py
