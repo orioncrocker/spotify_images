@@ -7,11 +7,11 @@ git clone https://github.com/orioncrocker/spotify_images
 ```
 
 ## Setup:
-Before using this program, you'll need to get credentials from [Spotify's API](https://developer.spotify.com/documentation/web-api/quick-start/). An account on Spotify will provide two credentials: 'client id' and 'client secret.' In order to use your own credentials, you will have to create a file named `config.py.`
+Before using this program, you'll need to get credentials from [Spotify's API](https://developer.spotify.com/documentation/web-api/quick-start/). An account on Spotify will provide two credentials: 'client id' and 'client secret.' In order to use your own credentials, you will have to create a file named `config.py.` A file name `your\_config.py` has been provided for you to modify.
 
 Your `config.py` file should have these two fields:
 ```python
-client\_id = 'your client id'
+client_id = 'your client id'
 client_secret = 'your client secret'
 ```
 
@@ -30,50 +30,51 @@ This option did not take advantage of the `verbose` flag `-v` or `collage` flag 
 python3 main.py -vca 'Carpenter Brut'
 ```
 ```
-results/carpenter\_brut/trilogy.jpeg
-results/carpenter\_brut/leather\_teeth.jpeg
-results/carpenter\_brut/carpenterbrutlive.jpeg
-results/carpenter\_brut/night\_stalker\_(from_"the\_rise\_of\_the\_synths").jpeg
-results/carpenter\_brut/hush\_sally,\_hush!.jpeg
-results/carpenter\_brut/maniac\_(live).jpeg
-results/carpenter\_brut/turbo\_killer\_(live).jpeg
-7 saved to results/carpenter\_brut
+results/carpenter_brut/trilogy.jpeg
+results/carpenter_brut/leather_teeth.jpeg
+results/carpenter_brut/carpenterbrutlive.jpeg
+results/carpenter_brut/night_stalker_(from_"the_rise_of_the_synths").jpeg
+results/carpenter_brut/hush_sally,_hush!.jpeg
+results/carpenter_brut/maniac_(live).jpeg
+results/carpenter_brut/turbo_killer_(live).jpeg
+7 saved to results/carpenter_brut
 Total unique pictures: 7
 Rows: 2	Cols: 3
-Collage saved as: results/carpenter\_brut.jpeg```
+Collage saved as: results/carpenter_brut.jpeg
 ```
 The resulting collage:
+
 [![Carpenter Brut Collage](examples/collage.jpeg)]()
 
 To save all images of a playlist, you will need to URI of the playlist from Spotify. This can be found on Spotify's application or web browser
 
-[![Example URI](examples/uri.jpeg)]()
-
+[![Example URI](examples/uri.png)]()
 
 ```bash
 python3 main.py -vcp spotify:playlist:1l3ttggvijrdbYX8lsZ7eI
 ```
 ```
-results/outrun\_ynthwave/near\_dark.jpeg
-results/outrun\_synthwave/into\_the\_abyss.jpeg
-results/outrun\_synthwave/send\_the\_signal.jpeg
-results/outrun\_synthwave/the\_shape.jpeg
-results/outrun\_synthwave/volume\_1.jpeg
-results/outrun\_synthwave/trilogy.jpeg
-results/outrun\_synthwave/this\_means\_war.jpeg
-results/outrun\_synthwave/dangerous\_days.jpeg
-results/outrun\_synthwave/the\_wrath\_of\_code.jpeg
-results/outrun\_synthwave/bad\_mood\_(deluxe).jpeg
-results/outrun\_synthwave/gunship.jpeg
-results/outrun\_synthwave/the\_real\_deal.jpeg
-results/outrun\_synthwave/storm\_city.jpeg
-results/outrun\_synthwave/leather\_teeth.jpeg
-14 images saved to results/outrun\_synthwave
+results/outrun_ynthwave/near_dark.jpeg
+results/outrun_synthwave/into_the_abyss.jpeg
+results/outrun_synthwave/send_the_signal.jpeg
+results/outrun_synthwave/the_shape.jpeg
+results/outrun_synthwave/volume_1.jpeg
+results/outrun_synthwave/trilogy.jpeg
+results/outrun_synthwave/this_means_war.jpeg
+results/outrun_synthwave/dangerous_days.jpeg
+results/outrun_synthwave/the_wrath_of_code.jpeg
+results/outrun_synthwave/bad_mood_(deluxe).jpeg
+results/outrun_synthwave/gunship.jpeg
+results/outrun_synthwave/the_real_deal.jpeg
+results/outrun_synthwave/storm_city.jpeg
+results/outrun_synthwave/leather_teeth.jpeg
+14 images saved to results/outrun_synthwave
 Total unique pictures: 14
 Rows: 3	Cols: 4
-Collage saved as: results/outrun\_synthwave.jpeg
+Collage saved as: results/outrun_synthwave.jpeg
 ```
 The resulting collage:
+
 [![Outrun Collage](exaples/outrun.jpeg)]()
 
 To specify the output location and name of a collage file, use the `-o` flag.
@@ -87,4 +88,4 @@ Collage saved as: output.jpeg
 There is no need to add a file extension to the name, as the default always saves as a `.jpeg`.
 
 ## Planned features:
-Specific width and height, for the purposes of creating wallpapers for screens of various resolutions. This requires more math and time than my small brain can comprehend in a small amount of time.
+Specific width and height, for the purposes of creating wallpapers for screens of various resolutions. This requires more math than my small brain can comprehend in a small amount of time.
