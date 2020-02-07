@@ -44,11 +44,11 @@ Collage saved as: results/carpenter_brut.jpeg
 ```
 The resulting collage:
 
-[![Carpenter Brut Collage](examples/collage.jpeg)]()
+[![Carpenter Brut Collage](examples/collage.jpeg)](https://github.com/orioncrocker/spotify_images/blob/master/examples/collage.jpeg)
 
 To save all images of a playlist, you will need to URI of the playlist from Spotify. This can be found on Spotify's application or web browser
 
-[![Example URI](examples/uri.png)]()
+[![Example URI](examples/uri.png)](https://github.com/orioncrocker/spotify_images/blob/master/examples/uri.png)
 
 ```bash
 python3 main.py -vcp spotify:playlist:1l3ttggvijrdbYX8lsZ7eI
@@ -75,7 +75,7 @@ Collage saved as: results/outrun_synthwave.jpeg
 ```
 The resulting collage:
 
-[![Outrun Collage](exaples/outrun.jpeg)]()
+[![Outrun Collage](examples/outrun.jpeg)](https://github.com/orioncrocker/spotify_images/blob/master/examples/outrun.jpeg)
 
 To specify the output location and name of a collage file, use the `-o` flag.
 ```bash
