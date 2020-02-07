@@ -1,5 +1,5 @@
 # spotify\_collage
-'spotify\_collage' provides a simple method of retrieving all unique album art from either a Spotify playlist or artist on Spotify and creating a collage from the query.
+`spotify\_collage` provides a simple method of retrieving all unique album art from either a Spotify playlist or artist on Spotify and creating a collage from the query.
 
 ## Installation:
 ```bash
@@ -7,7 +7,7 @@ git clone https://github.com/orioncrocker/spotify_images
 ```
 
 ## Setup:
-Before using this program, you'll need to get credentials from [Spotify's API](https://developer.spotify.com/documentation/web-api/quick-start/). An account on Spotify will provide two credentials: 'client id' and 'client secret.' In order to use your own credentials, you will have to create a file named `config.py.` A file name `your\_config.py` has been provided for you to modify.
+Before using this program, you'll need to get credentials from [Spotify's API](https://developer.spotify.com/documentation/web-api/quick-start/). An account on Spotify will provide two credentials: 'client id' and 'client secret.' In order to use your own credentials, you will have to create a file named `config.py.` A file name `your_config.py` has been provided for you to modify.
 
 Your `config.py` file should have these two fields:
 ```python
@@ -16,6 +16,9 @@ client_secret = 'your client secret'
 ```
 
 ## Usage:
+
+# Get all album art from an artist:
+
 Download all album artwork from a specific artist on Spotify
 ```bash
 python3 main.py -a 'Carpenter Brut'
@@ -37,7 +40,6 @@ results/carpenter_brut/night_stalker_(from_"the_rise_of_the_synths").jpeg
 results/carpenter_brut/hush_sally,_hush!.jpeg
 results/carpenter_brut/maniac_(live).jpeg
 results/carpenter_brut/turbo_killer_(live).jpeg
-7 saved to results/carpenter_brut
 Total unique pictures: 7
 Rows: 2	Cols: 3
 Collage saved as: results/carpenter_brut.jpeg
@@ -45,6 +47,8 @@ Collage saved as: results/carpenter_brut.jpeg
 The resulting collage:
 
 [![Carpenter Brut Collage](examples/collage.jpeg)](https://github.com/orioncrocker/spotify_images/blob/master/examples/collage.jpeg)
+
+# Get all album art from a playlist:
 
 To save all images of a playlist, you will need to URI of the playlist from Spotify. This can be found on Spotify's application or web browser
 
@@ -68,7 +72,6 @@ results/outrun_synthwave/gunship.jpeg
 results/outrun_synthwave/the_real_deal.jpeg
 results/outrun_synthwave/storm_city.jpeg
 results/outrun_synthwave/leather_teeth.jpeg
-14 images saved to results/outrun_synthwave
 Total unique pictures: 14
 Rows: 3	Cols: 4
 Collage saved as: results/outrun_synthwave.jpeg

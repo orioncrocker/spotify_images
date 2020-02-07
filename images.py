@@ -102,6 +102,5 @@ def get_playlist_images(uri, verbose):
     count += 1
     pics.append(pic)
 
-  print(str(len(pics)) + " images saved to " + directory)
   return directory
 
