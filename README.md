@@ -15,9 +15,9 @@ client_id = 'your client id'
 client_secret = 'your client secret'
 ```
 
-## Usage:
+# Usage:
 
-# Get all album art from an artist:
+## Get all album art from an artist:
 
 Download all album artwork from a specific artist on Spotify
 ```bash
@@ -48,7 +48,7 @@ The resulting collage:
 
 [![Carpenter Brut Collage](examples/collage.jpeg)](https://github.com/orioncrocker/spotify_images/blob/master/examples/collage.jpeg)
 
-# Get all album art from a playlist:
+## Get all album art from a playlist:
 
 To save all images of a playlist, you will need to URI of the playlist from Spotify. This can be found on Spotify's application or web browser
 
