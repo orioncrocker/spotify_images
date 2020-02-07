@@ -1,5 +1,5 @@
 # spotify\_collage
-`spotify\_collage` provides a simple method of retrieving all unique album art from either a Spotify playlist or artist on Spotify and creating a collage from the query.
+`spotify_collage` provides a simple method of retrieving all unique album art from either a Spotify playlist or artist on Spotify and creating a collage from the query.
 
 ## Installation:
 ```bash
@@ -21,32 +21,35 @@ client_secret = 'your client secret'
 
 Download all album artwork from a specific artist on Spotify
 ```bash
-python3 main.py -a 'Carpenter Brut'
+python3 main.py -a 'Protest The Hero'
 ```
 ```
-7 saved to results/carpenter_brut
+9 saved to results/protest_the_hero
 ```
 
 This option did not take advantage of the `verbose` flag `-v` or `collage` flag `-c`. When using both of these flags, the output will look as such.
 
 ```bash
-python3 main.py -vca 'Carpenter Brut'
+python3 main.py -vca 'Protest The Hero'
 ```
 ```
-results/carpenter_brut/trilogy.jpeg
-results/carpenter_brut/leather_teeth.jpeg
-results/carpenter_brut/carpenterbrutlive.jpeg
-results/carpenter_brut/night_stalker_(from_"the_rise_of_the_synths").jpeg
-results/carpenter_brut/hush_sally,_hush!.jpeg
-results/carpenter_brut/maniac_(live).jpeg
-results/carpenter_brut/turbo_killer_(live).jpeg
-Total unique pictures: 7
-Rows: 2	Cols: 3
-Collage saved as: results/carpenter_brut.jpeg
+results/protest_the_hero/fortress.jpeg
+results/protest_the_hero/volition.jpeg
+results/protest_the_hero/kezia_(remaster).jpeg
+results/protest_the_hero/scurrilous.jpeg
+results/protest_the_hero/pacific_myth_(deluxe_edition).jpeg
+results/protest_the_hero/kezia.jpeg
+results/protest_the_hero/the_best_of_protest_the_hero.jpeg
+results/protest_the_hero/gallop_meets_the_earth_(live).jpeg
+results/protest_the_hero/sequoia_throne.jpeg
+9 saved to results/protest_the_hero
+Total unique pictures: 9
+Rows: 3	Cols: 3
+Collage saved as: results/protest_the_hero.jpeg
 ```
 The resulting collage:
 
-[![Carpenter Brut Collage](examples/collage.jpeg)](https://github.com/orioncrocker/spotify_images/blob/master/examples/collage.jpeg)
+[![Protest The Hero Collage](examples/collage.jpeg)](https://github.com/orioncrocker/spotify_images/blob/master/examples/collage.jpeg)
 
 ## Get all album art from a playlist:
 
@@ -58,7 +61,7 @@ To save all images of a playlist, you will need to URI of the playlist from Spot
 python3 main.py -vcp spotify:playlist:1l3ttggvijrdbYX8lsZ7eI
 ```
 ```
-results/outrun_ynthwave/near_dark.jpeg
+results/outrun_synthwave/near_dark.jpeg
 results/outrun_synthwave/into_the_abyss.jpeg
 results/outrun_synthwave/send_the_signal.jpeg
 results/outrun_synthwave/the_shape.jpeg
