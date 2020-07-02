@@ -44,6 +44,7 @@ python3 main.py -p https://open.spotify.com/playlist/6urXF25l3Hr2S4crKwF3L0
 18 saved to results/night_drive
 ```
 
+## Create a collage from a playlist or artist artwork
 Neither of the previous examples took advantage of the `verbose` flag `-v` or `collage` flag `-c`. When using both of these flags, the output will look as such.
 
 ```bash
