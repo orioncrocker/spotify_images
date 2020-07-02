@@ -15,73 +15,58 @@ client_id = 'your client id'
 client_secret = 'your client secret'
 ```
 
+Two prerequisites you'll need installed on your machine are pillow and spotipy.
+You can easily get both of these from the `pip` repository.
+If you aren't yet aware of the beauty of `pip`, go check out [it's website](https://pypi.org/project/pip/).
+You're welcome.
+
+```bash
+pip3 install pillow
+pip3 install spotipy
+```
+
 # Usage:
 
 ## Get all album art from an artist:
-
-Download all album artwork from a specific artist on Spotify
+Download all album artwork from a specific artist on Spotify by using the `-a` command for `--artist`.
 ```bash
-python3 main.py -a 'Protest The Hero'
+python3 main.py -a 'Unleash the Archers'
+11 saved to results/unleash_the_archers
 ```
-```
-9 saved to results/protest_the_hero
-```
-
-This option did not take advantage of the `verbose` flag `-v` or `collage` flag `-c`. When using both of these flags, the output will look as such.
-
-```bash
-python3 main.py -vca 'Protest The Hero'
-```
-```
-results/protest_the_hero/fortress.jpeg
-results/protest_the_hero/volition.jpeg
-results/protest_the_hero/kezia_(remaster).jpeg
-results/protest_the_hero/scurrilous.jpeg
-results/protest_the_hero/pacific_myth_(deluxe_edition).jpeg
-results/protest_the_hero/kezia.jpeg
-results/protest_the_hero/the_best_of_protest_the_hero.jpeg
-results/protest_the_hero/gallop_meets_the_earth_(live).jpeg
-results/protest_the_hero/sequoia_throne.jpeg
-9 saved to results/protest_the_hero
-Total unique pictures: 9
-Rows: 3	Cols: 3
-Collage saved as: results/protest_the_hero.jpeg
-```
-The resulting collage:
-
-[![Protest The Hero Collage](examples/collage.jpeg)](https://github.com/orioncrocker/spotify_images/blob/master/examples/collage.jpeg)
+Keep in mind there are a LOT bands on Spotify, and sometimes the specific artist you're looking for shares a name with another group.
+Because of this, a more precise way of obtaining album artwork is through the playlist method.
 
 ## Get all album art from a playlist:
+Download all unique artwork from a specific playlist on Spotify.
+Provide either the URL or URI to the argument `-p` for `--playlist`.
+```bash
+python3 main.py -p https://open.spotify.com/playlist/6urXF25l3Hr2S4crKwF3L0
+18 saved to results/night_drive
+```
 
-To save all images of a playlist, you will need to URI of the playlist from Spotify. This can be found on Spotify's application or web browser
-
-[![Example URI](examples/uri.png)](https://github.com/orioncrocker/spotify_images/blob/master/examples/uri.png)
+Neither of the previous examples took advantage of the `verbose` flag `-v` or `collage` flag `-c`. When using both of these flags, the output will look as such.
 
 ```bash
-python3 main.py -vcp spotify:playlist:1l3ttggvijrdbYX8lsZ7eI
-```
-```
-results/outrun_synthwave/near_dark.jpeg
-results/outrun_synthwave/into_the_abyss.jpeg
-results/outrun_synthwave/send_the_signal.jpeg
-results/outrun_synthwave/the_shape.jpeg
-results/outrun_synthwave/volume_1.jpeg
-results/outrun_synthwave/trilogy.jpeg
-results/outrun_synthwave/this_means_war.jpeg
-results/outrun_synthwave/dangerous_days.jpeg
-results/outrun_synthwave/the_wrath_of_code.jpeg
-results/outrun_synthwave/bad_mood_(deluxe).jpeg
-results/outrun_synthwave/gunship.jpeg
-results/outrun_synthwave/the_real_deal.jpeg
-results/outrun_synthwave/storm_city.jpeg
-results/outrun_synthwave/leather_teeth.jpeg
-Total unique pictures: 14
-Rows: 3	Cols: 4
-Collage saved as: results/outrun_synthwave.jpeg
+python3 main.py -vca 'Unleash the Archers'
+results/unleash_the_archers/apex.jpeg
+results/unleash_the_archers/northwest_passage.jpeg
+results/unleash_the_archers/demons_of_the_astrowaste.jpeg
+results/unleash_the_archers/time_stands_still.jpeg
+results/unleash_the_archers/abyss.jpeg
+results/unleash_the_archers/heartless_world.jpeg
+results/unleash_the_archers/behold_the_devastation.jpeg
+results/unleash_the_archers/defy_the_skies.jpeg
+results/unleash_the_archers/cleanse_the_bloodlines.jpeg
+results/unleash_the_archers/tonight_we_ride.jpeg
+results/unleash_the_archers/the_matriarch.jpeg
+11 saved to results/unleash_the_archers
+Total unique pictures: 11
+Rows: 3	Cols: 3
+Collage saved as: results/unleash_the_archers.jpeg
 ```
 The resulting collage:
 
-[![Outrun Collage](examples/outrun.jpeg)](https://github.com/orioncrocker/spotify_images/blob/master/examples/outrun.jpeg)
+[![Unleash The Archers Collage](examples/collage.jpeg)](https://github.com/orioncrocker/spotify_images/blob/master/examples/collage.jpeg)
 
 To specify the output location and name of a collage file, use the `-o` flag.
 ```bash
@@ -94,4 +79,9 @@ Collage saved as: output.jpeg
 There is no need to add a file extension to the name, as the default always saves as a `.jpeg`.
 
 ## Planned features:
-Specific width and height, for the purposes of creating wallpapers for screens of various resolutions. This requires more math than my small brain can comprehend in a small amount of time.
+I would love to be able to specify a width and height for the purposes of creating wallpapers.
+Unfortunately this requires more math than my smooth brain can comprehend in a small amount of time.
+
+A website that hosts this code via [Flask](https://flask.palletsprojects.com/en/1.1.x/) 
+would be ideal so that anyone could utilize this software without the hassle of installation and configuration.
+However if I'm going do that I may as well rewrite the whole darn thing in Javascript and save myself some trouble and headache.
