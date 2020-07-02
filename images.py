@@ -23,8 +23,8 @@ credentials = oauth2.SpotifyClientCredentials(
 def rename(name):
   return name.replace(' ','_').replace('/','_').lower()
 
-def get_artist_images(artist, verbose):
 
+def get_artist_images(artist, verbose):
   token = credentials.get_access_token()
   sp = spotipy.Spotify(auth=token)
 
@@ -66,14 +66,18 @@ def get_artist_images(artist, verbose):
   return directory
 
 
+def url_to_uri(uri):
+  offset = uri.find('playlist')
+  return 'spotify:' + uri[offset:].replace('/',':')
+
 
 def get_playlist_images(uri, verbose):
-
+  if uri[:5] == 'https':
+    uri = url_to_uri(uri)
   token = credentials.get_access_token()
   sp = spotipy.Spotify(auth=token)
-
   results = sp.playlist(uri, fields='name,tracks.items.track.album.name,tracks.items.track.album.images', market='US')
-  
+
   # get name of playlist for file output
   directory = 'results/' + rename(results['name'])
   if not os.path.exists(directory):
@@ -102,5 +106,5 @@ def get_playlist_images(uri, verbose):
     count += 1
     pics.append(pic)
 
+  print(str(len(pics)) + " saved to " + directory)
   return directory
-
