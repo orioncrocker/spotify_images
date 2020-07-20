@@ -28,12 +28,7 @@ def get_artist_images(artist, verbose):
   token = credentials.get_access_token()
   sp = spotipy.Spotify(auth=token)
 
-  albums = sp.artist_albums(artist_id=artist, album_type='album')
-  singles = sp.artist_albums(artist_id=artist, album_type='single')
-  results = albums.copy()
-  print(results)
-  results.update(singles)
-  print(results)
+  results = sp.artist_albums(artist_id=artist, album_type='single,album')
 
   if not results:
     print("Could not find artist...")
