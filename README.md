@@ -21,8 +21,7 @@ If you aren't yet aware of the beauty of `pip`, go check out [it's website](http
 You're welcome.
 
 ```bash
-pip3 install pillow
-pip3 install spotipy
+pip3 install -r requirements.txt
 ```
 
 # Usage:
@@ -30,7 +29,7 @@ pip3 install spotipy
 ## Get all album art from an artist:
 Download all album artwork from a specific artist on Spotify by using the `-a` command for `--artist`.
 ```bash
-python3 main.py -a 'Unleash the Archers'
+python3 main.py -a https://open.spotify.com/artist/6irKXFXk2sPNmHtKqmrfuU
 11 saved to results/unleash_the_archers
 ```
 Keep in mind there are a LOT bands on Spotify, and sometimes the specific artist you're looking for shares a name with another group.
