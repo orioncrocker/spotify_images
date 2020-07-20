@@ -28,15 +28,16 @@ def get_artist_images(artist, verbose):
   token = credentials.get_access_token()
   sp = spotipy.Spotify(auth=token)
 
-  results = sp.search(q='artist:'+artist, limit=50, type='album')
+  results = sp.artist_albums(artist_id=artist, album_type='album')
 
   if not results:
     print("Could not find artist...")
     exit(1)
 
-  results = results['albums']
   results = results['items']
+  print(results)
 
+  artist = results[0]['artists'][0]['name']
   directory = 'results/' + rename(artist)
   if not os.path.exists(directory):
     os.makedirs(directory)
