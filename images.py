@@ -21,21 +21,25 @@ credentials = oauth2.SpotifyClientCredentials(
         client_secret=config.client_secret)
 
 def rename(name):
-  return name.replace(' ','_').replace('/','_').lower()
+  return name.replace(' ','_').replace('/','_').lower().replace('[','(').replace(']',')')
 
 
 def get_artist_images(artist, verbose):
   token = credentials.get_access_token()
   sp = spotipy.Spotify(auth=token)
 
-  results = sp.artist_albums(artist_id=artist, album_type='album')
+  albums = sp.artist_albums(artist_id=artist, album_type='album')
+  singles = sp.artist_albums(artist_id=artist, album_type='single')
+  results = albums.copy()
+  print(results)
+  results.update(singles)
+  print(results)
 
   if not results:
     print("Could not find artist...")
     exit(1)
 
   results = results['items']
-  print(results)
 
   artist = results[0]['artists'][0]['name']
   directory = 'results/' + rename(artist)

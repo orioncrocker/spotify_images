@@ -23,12 +23,7 @@ def calc_size(total):
   if grid_size.is_integer():
     rows, cols = (int(grid_size), int(grid_size))
   else:
-    grid_size = int(grid_size)
-    rows, cols = (int(grid_size), int(grid_size+1))
-
-  # hacky adjusting
-  if ((rows * cols) > total):
-    cols = cols - 1
+    rows, cols = (math.floor(grid_size), math.ceil(grid_size))
 
   return (rows, cols)
 
