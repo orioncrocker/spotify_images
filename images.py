@@ -8,27 +8,26 @@
 ################################################################################
 
 import os
-import spotipy
-import spotipy.oauth2 as oauth2
 import requests
+from zipfile import ZipFile
 
-# local files
-import config
-
-# global credentials from config.py
-credentials = oauth2.SpotifyClientCredentials(
-        client_id=config.client_id,
-        client_secret=config.client_secret)
 
 def rename(name):
-  return name.replace(' ','_').replace('/','_').lower().replace('[','(').replace(']',')')
+  return name.lower().replace(' ','_').replace('/','_').replace('[','(').replace(']',')')
 
 
-def get_artist_images(artist, verbose):
-  token = credentials.get_access_token()
-  sp = spotipy.Spotify(auth=token)
+def zip_images(directory):
+    zip_this = ZipFile(directory + '.zip', 'w')
+    os.chdir(directory)
+    for root, dirs, files in os.walk(os.getcwd()):
+      for file in files:
+        zip_this.write(file)
+    zip_this.close()
 
-  results = sp.artist_albums(artist_id=artist, album_type='single,album')
+
+def get_artist_images(api, directory, artist, verbose=False):
+
+  results = api.artist_albums(artist_id=artist, limit=50)
 
   if not results:
     print("Could not find artist...")
@@ -37,7 +36,7 @@ def get_artist_images(artist, verbose):
   results = results['items']
 
   artist = results[0]['artists'][0]['name']
-  directory = 'results/' + rename(artist)
+  directory = directory + '/' + rename(artist)
   if not os.path.exists(directory):
     os.makedirs(directory)
 
@@ -63,6 +62,7 @@ def get_artist_images(artist, verbose):
     pics.append(pic)
 
   print(str(len(pics)) + " saved to " + directory)
+  zip_images(directory)
   return directory
 
 
@@ -71,15 +71,13 @@ def url_to_uri(uri):
   return 'spotify:' + uri[offset:].replace('/',':')
 
 
-def get_playlist_images(uri, verbose):
+def get_playlist_images(api, directory, uri, verbose=False):
   if uri[:5] == 'https':
     uri = url_to_uri(uri)
-  token = credentials.get_access_token()
-  sp = spotipy.Spotify(auth=token)
-  results = sp.playlist(uri, fields='name,tracks.items.track.album.name,tracks.items.track.album.images', market='US')
+  results = api.playlist(uri, fields='name,tracks.items.track.album.name,tracks.items.track.album.images', market='US')
 
   # get name of playlist for file output
-  directory = 'results/' + rename(results['name'])
+  directory = directory + '/' + rename(results['name'])
   if not os.path.exists(directory):
     os.makedirs(directory)
 
@@ -107,4 +105,5 @@ def get_playlist_images(uri, verbose):
     pics.append(pic)
 
   print(str(len(pics)) + " saved to " + directory)
+  zip_images(directory)
   return directory

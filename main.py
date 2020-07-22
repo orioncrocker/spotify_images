@@ -10,9 +10,8 @@
 
 import argparse
 
-# local files
-import collage
-import images
+from spotify_images import images, collage
+
 
 def main():
 
@@ -51,6 +50,7 @@ def main():
 
   if c:
     collage.make_collage(filename=o, directory=directory, verbose=v)
+
 
 if __name__ == '__main__':
   main()
