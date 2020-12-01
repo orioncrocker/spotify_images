@@ -28,7 +28,7 @@ def calc_size(total):
   return (rows, cols)
 
 
-def make_collage(directory, verbose, filename):
+def make_collage(directory, verbose):
 
   pics = []
   if directory:
@@ -63,10 +63,7 @@ def make_collage(directory, verbose, filename):
     collage.paste(new_row, (0,y_offset))
     y_offset += 640
 
-  if filename:
-    filename += '.jpeg'
-  else:
-    filename = (directory + '.jpeg')
+  filename = (directory + '.jpeg')
 
   collage.save(filename)
   print("Collage saved as: " + filename)
