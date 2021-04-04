@@ -15,8 +15,6 @@ import images, collage
 def main():
 
   parse = argparse.ArgumentParser(description='Spotify image gatherer and creator of collages')
-  #parse.add_argument('-p', '--playlist', dest='playlist', type=str, help='Get all album art from a specific playlist')
-  #parse.add_argument('-a', '--artist', dest='artist', type=str, help='Get album art from an artist, by default it grabs first 10')
   parse.add_argument('url', nargs='?')
   parse.add_argument('-c', '--collage', action='count', default=0, help='Create a collage out of images gathered from "playlist" or "artist" argument.')
   parse.add_argument('-d', '--directory', dest='directory', type=str, help='Specify the a target directory to output results')
@@ -32,11 +30,6 @@ def main():
   d = args.directory
   v = args.verbose
   z = args.zip
-
-  if not c and o:
-    parse.print_help()
-    print("\nCannot specify name of collage without -c flag")
-    exit(1)
   
   directory = images.get_images(args.url, directory=args.directory, verbose=args.verbose, zip_this=args.zip)
 
