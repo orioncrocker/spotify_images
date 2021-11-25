@@ -30,7 +30,7 @@ pip3 install -r requirements.txt
 ## Download album art from an artist or playlist:
 By default `spotify_images` fetches all unique art of any Spotify arist or playlist link given as an argument
 ```bash
-python3 main.py https://open.spotify.com/playlist/13OSe3KLY2qnUrdP2Sv6j7
+python3 main.py "https://open.spotify.com/playlist/13OSe3KLY2qnUrdP2Sv6j7"
 ```
 
 ## Verbose
@@ -40,7 +40,7 @@ Use the `-v` or `--verbose` flag to see what the program is doing in real time.
 Use the `-c` or `--collage` collage flag to create a collage of the artwork downloaded.
 
 ```bash
-python3 main.py -vc https://open.spotify.com/playlist/13OSe3KLY2qnUrdP2Sv6j7
+python3 main.py -vc "https://open.spotify.com/playlist/13OSe3KLY2qnUrdP2Sv6j7"
 Name: SRC#15
 Type: playlist
 results/src#15/blade_runner_(music_from_the_original_soundtrack).jpeg
