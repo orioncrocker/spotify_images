@@ -43,6 +43,8 @@ def get_images(url, directory=None, verbose=False, zip_this=False):
   if results == '':
     print("No results found, check URL and try again.")
     exit(1)
+  else:
+    print(typeof + " found, downloading...")
 
   if typeof == 'artist':
     name = results['items'][0]['artists'][0]['name']

@@ -9,20 +9,16 @@
 
 import config
 import spotipy
-import spotipy.oauth2 as oauth2
+from spotipy.oauth2 import SpotifyClientCredentials
 
-def get_access():
-  credentials = oauth2.SpotifyClientCredentials(
-      client_id=config.client_id,
-      client_secret=config.client_secret)
+def get_access(check = 0):
 
-  token = credentials.get_access_token()
+  auth = SpotifyClientCredentials(
+    client_id=config.client_id,
+    client_secret=config.client_secret)
+  sp = spotipy.Spotify(auth_manager = auth)
 
-  if (token == None):
-    print("Could not get Spotify access token")
-    exit(1)
-
-  return spotipy.Spotify(auth=token)
+  return sp
 
 
 def get_artist(url):
@@ -32,3 +28,6 @@ def get_artist(url):
 def get_playlist(url):
   spotify = get_access()
   return spotify.playlist(url, fields='name,tracks.items.track.album.name,tracks.items.track.album.images', market='US')
+
+if __name__ == '__main__':
+  get_access(1)
