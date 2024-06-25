@@ -65,7 +65,6 @@ The resulting collage:
 ![Unleash The Archers Collage](examples/collage.jpeg)
 
 ## Future features:
-I would love to be able to specify a width and height for the purposes of creating wallpapers.
-Additionally, a website that hosts this code via [Flask](https://flask.palletsprojects.com/en/1.1.x/) 
+A website that hosts this code via [Flask](https://flask.palletsprojects.com/en/1.1.x/) 
 would be ideal so that anyone could utilize this software without the hassle of installation and configuration.
 However if I'm going do that I may as well rewrite this program in Javascript and save myself some trouble.

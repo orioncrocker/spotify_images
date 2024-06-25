@@ -11,6 +11,8 @@ import api
 import os
 import requests
 from zipfile import ZipFile
+from PIL import Image
+from io import BytesIO
 
 
 def rename(name):
@@ -25,13 +27,18 @@ def zip_images(directory):
       zip_this.write(file)
   zip_this.close()
 
-
 def url_to_uri(uri, typeof):
   offset = uri.find(typeof)
   return 'spotify:' + uri[offset:].replace('/',':')
 
+def parse_image_size(size_str):
+  try:
+    width, height = map(int, size_str.split('x'))
+    return (width, height)
+  except ValueError:
+    raise ValueError('Invalid size format. Use WIDTHxHEIGHT format, e.g 800x800')
 
-def get_images(url, directory=None, verbose=False, zip_this=False):
+def get_images(url, directory=None, verbose=False, zip_this=False, image_size=None):
   typeof = ''
   results = ''
   if 'artist' in url:
@@ -64,6 +71,9 @@ def get_images(url, directory=None, verbose=False, zip_this=False):
   if not os.path.exists(directory):
     os.makedirs(directory)
 
+  if image_size:
+    image_size = parse_image_size(image_size)
+
   count = 0
   pics = []
 
@@ -81,12 +91,16 @@ def get_images(url, directory=None, verbose=False, zip_this=False):
 
     pic = requests.get(url, allow_redirects=True)
 
+    img = Image.open(BytesIO(pic.content))
+    if image_size:
+      img = img.resize(image_size)
+
     if verbose:
       print(path)
 
-    open(path, 'wb').write(pic.content)
+    img.save(path)
     count += 1
-    pics.append(pic)
+    pics.append(img)
 
   print(str(len(pics)) + " saved to " + directory)
 
