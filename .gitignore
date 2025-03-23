@@ -2,3 +2,6 @@
 *__
 */
 !/examples
+.cache
+tags
+config.py
