@@ -11,6 +11,7 @@ import api
 import os
 import requests
 from zipfile import ZipFile
+import globals
 
 
 def rename(name):
@@ -31,7 +32,7 @@ def url_to_uri(uri, typeof):
   return 'spotify:' + uri[offset:].replace('/',':')
 
 
-def get_images(url, directory=None, verbose=False, zip_this=False):
+def get_images(url):
   typeof = ''
   results = ''
   if 'artist' in url:
@@ -53,11 +54,11 @@ def get_images(url, directory=None, verbose=False, zip_this=False):
     name = results['name']
     results = results['tracks']['items']
 
-  if verbose:
+  if globals.verbose:
     print('Name: ' + name + '\nType: ' + typeof)
-    
-  if directory:
-    directory = directory + '/' + rename(name)
+
+  if globals.user_dir:
+    directory = globals.user_dir + '/' + rename(name)
   else:
     directory = 'results/' + rename(name)
 
@@ -74,14 +75,14 @@ def get_images(url, directory=None, verbose=False, zip_this=False):
     elif typeof == 'playlist':
       url = track['track']['album']['images'][0]['url']
       name = rename(track['track']['album']['name'])
-      
+
     path = directory + '/' + name + '.jpeg'
     if os.path.exists(path):
       continue
 
     pic = requests.get(url, allow_redirects=True)
 
-    if verbose:
+    if globals.verbose:
       print(path)
 
     open(path, 'wb').write(pic.content)
@@ -90,7 +91,7 @@ def get_images(url, directory=None, verbose=False, zip_this=False):
 
   print(str(len(pics)) + " saved to " + directory)
 
-  if zip_this:
+  if globals.zip_results:
     zip_images(directory)
 
   return directory

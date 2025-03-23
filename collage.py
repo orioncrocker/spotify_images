@@ -12,6 +12,7 @@ import os
 import glob
 from PIL import Image
 import math
+import globals
 
 def calc_size(total):
 
@@ -30,19 +31,19 @@ def calc_size(total):
   return (rows, cols)
 
 
-def make_collage(directory, verbose):
+def make_collage(directory):
 
   pics = []
   if directory:
     pics = glob.glob(directory + '/*.jpeg')
   pics = [Image.open(i) for i in pics]
 
-  if verbose:
+  if globals.verbose:
     print("Total unique pictures: " + str(len(pics)))
 
   rows,cols = calc_size(len(pics))
 
-  if verbose:
+  if globals.verbose:
     print("Rows: " + str(rows) + "\tCols: " + str(cols))
 
   # create new blank image of size cols * rows

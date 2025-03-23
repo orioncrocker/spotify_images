@@ -9,7 +9,7 @@
 ################################################################################
 
 import argparse
-import images, collage
+import images, collage, globals
 
 
 def main():
@@ -26,15 +26,13 @@ def main():
     print('Spotify URL is required.')
     exit(1)
 
-  c = args.collage
-  d = args.directory
-  v = args.verbose
-  z = args.zip
+  globals.user_dir = args.directory
+  globals.verbose = args.verbose
+  globals.zip_results = args.zip
   
-  directory = images.get_images(args.url, directory=args.directory, verbose=args.verbose, zip_this=args.zip)
-
-  if c:
-    collage.make_collage(directory=directory, verbose=args.verbose)
+  directory = images.get_images(args.url)
+  if args.collage:
+    collage.make_collage(directory)
 
 
 if __name__ == '__main__':
