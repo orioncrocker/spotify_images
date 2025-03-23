@@ -20,6 +20,7 @@ def main():
   parse.add_argument('-d', '--directory', dest='directory', type=str, help='Specify the a target directory to output results')
   parse.add_argument('-v', '--verbose', action='count', default=0, help='See the program working instead of just believing that it is working')
   parse.add_argument('-z', '--zip', action='count', default=0, help='Output the directory into a zip file')
+  parse.add_argument('-s', '--size', dest='size', type=str, help='Specify the size of the image in WIDTHxHEIGHT format, e.g 800x800')
 
   args = parse.parse_args()
   if args.url is None:
@@ -30,8 +31,9 @@ def main():
   d = args.directory
   v = args.verbose
   z = args.zip
+  s = args.size
   
-  directory = images.get_images(args.url, directory=args.directory, verbose=args.verbose, zip_this=args.zip)
+  directory = images.get_images(args.url, directory=args.directory, verbose=args.verbose, zip_this=args.zip, image_size=s)
 
   if c:
     collage.make_collage(directory=directory, verbose=args.verbose)
