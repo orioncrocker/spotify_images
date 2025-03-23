@@ -47,24 +47,29 @@ def make_collage(directory):
     print("Rows: " + str(rows) + "\tCols: " + str(cols))
 
   # create new blank image of size cols * rows
-  collage = Image.new('RGB', (640 * cols, 640 * rows))
-  y_offset = 0
+  x_image_size = globals.image_size + globals.image_x_border
+  y_image_size = globals.image_size + globals.image_y_border
+  x_row_size = (x_image_size * cols) + globals.image_x_border
+  y_row_size = (y_image_size * rows) + globals.image_y_border
+
+  collage = Image.new('RGB', (x_row_size, y_row_size))
+  y_offset = globals.image_y_border
   count = 0;
   
   for row in range (0, rows):
     # create new image the size of one row
-    new_row = Image.new('RGB', (640 * cols, 640))
-    x_offset = 0
+    new_row = Image.new('RGB', (x_image_size * cols, y_image_size))
+    x_offset = globals.image_x_border
 
     # fill row image with images
     for col in range (0, cols):
       new_row.paste(pics[count], (x_offset,0))
       count += 1
-      x_offset += 640
+      x_offset += x_image_size
 
     # paste row into finished product
     collage.paste(new_row, (0,y_offset))
-    y_offset += 640
+    y_offset += y_image_size
 
   filename = (directory + '.jpeg')
 
