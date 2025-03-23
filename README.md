@@ -17,11 +17,11 @@ client_secret = 'your_client_secret'
 ```
 
 Two prerequisites you'll need installed on your machine are pillow and spotipy.
-You can easily get both of these from the `pip` repository.
-If you aren't yet aware of the beauty of `pip`, go check out [it's website](https://pypi.org/project/pip/).
-You're welcome.
+You can easily get both of these from the `pip` repository after you've set up a virtual python3 environment.
 
 ```bash
+python3 -m venv env
+source env/vin/activate
 pip3 install -r requirements.txt
 ```
 
