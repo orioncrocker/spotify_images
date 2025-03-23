@@ -24,6 +24,8 @@ def calc_size(total):
     rows, cols = (int(grid_size), int(grid_size))
   else:
     rows, cols = (math.floor(grid_size), math.ceil(grid_size))
+    if (rows * cols) > total:
+      rows, cols = (math.floor(grid_size), math.floor(grid_size))
 
   return (rows, cols)
 
