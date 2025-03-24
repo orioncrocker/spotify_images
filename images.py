@@ -46,8 +46,7 @@ def get_images(url):
   idx = 0
   print("Downloading images", end="", flush=True)
   for name, url in urls:
-    path = directory + "/" + name + ".jpeg"
-
+    path = directory + '/' + name + globals.image_ext
     if os.path.exists(path):
       duplicates += 1
       continue

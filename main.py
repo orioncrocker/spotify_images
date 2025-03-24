@@ -30,7 +30,7 @@ def main():
   globals.user_dir = args.directory
   globals.verbose = args.verbose
   globals.zip_results = args.zip
-  
+
   directory = images.get_images(args.url)
   if args.collage or args.wallpaper:
     collage.make_collage(directory, args.wallpaper)
