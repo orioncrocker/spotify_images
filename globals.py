@@ -11,5 +11,5 @@ user_dir = 0
 zip_results = 0
 spotify = None
 image_size = 640
-image_x_border = 20
-image_y_border = 20
+wallpaper_ratio = "16:9"
+

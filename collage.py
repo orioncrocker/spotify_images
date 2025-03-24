@@ -30,9 +30,27 @@ def calc_size(total):
 
   return (rows, cols)
 
+def get_wallpaper_ratio():
+  x,y = map(int, globals.wallpaper_ratio.split(':'))
+  return x/y
 
-def make_collage(directory):
+def calc_wallpaper_padding(rows, cols):
+  target_ratio = get_wallpaper_ratio()
+  current_ratio = cols/rows
+  if globals.verbose:
+    print("Target ratio: %f" % target_ratio)
+    print("Current ratio: %f" % current_ratio)
 
+  x_size = globals.image_size * cols
+  x_needed = ((x_size * target_ratio) / current_ratio) - x_size
+  x_padding = math.ceil(x_needed / (cols + 1))
+  x_total = x_size + (x_padding * (cols + 1))
+
+  # TODO!
+  y_padding = 0
+  return x_padding,y_padding
+
+def make_collage(directory, wallpaper):
   pics = []
   if directory:
     pics = glob.glob(directory + '/*.jpeg')
@@ -46,20 +64,29 @@ def make_collage(directory):
   if globals.verbose:
     print("Rows: " + str(rows) + "\tCols: " + str(cols))
 
+  x_padding = 0
+  y_padding = 0
+  if wallpaper:
+    x_padding,y_padding = calc_wallpaper_padding(rows, cols)
+
   # create new blank image of size cols * rows
-  x_image_size = globals.image_size + globals.image_x_border
-  y_image_size = globals.image_size + globals.image_y_border
-  x_row_size = (x_image_size * cols) + globals.image_x_border
-  y_row_size = (y_image_size * rows) + globals.image_y_border
+  x_image_size = globals.image_size + x_padding
+  y_image_size = globals.image_size + y_padding
+  x_row_size = (x_image_size * cols) + x_padding
+  y_row_size = (y_image_size * rows) + y_padding
+
+  if globals.verbose and wallpaper:
+    final_ratio = x_row_size / y_row_size
+    print("Result wallpaper ratio: %f" % final_ratio)
 
   collage = Image.new('RGB', (x_row_size, y_row_size))
-  y_offset = globals.image_y_border
+  y_offset = y_padding
   count = 0;
-  
+
   for row in range (0, rows):
     # create new image the size of one row
     new_row = Image.new('RGB', (x_image_size * cols, y_image_size))
-    x_offset = globals.image_x_border
+    x_offset = x_padding
 
     # fill row image with images
     for col in range (0, cols):
