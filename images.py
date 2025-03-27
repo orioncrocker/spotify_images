@@ -42,20 +42,32 @@ def get_images(url):
 
   pics = []
 
+  duplicates = 0
+  idx = 0
+  print("Downloading images", end="", flush=True)
   for name, url in urls:
     path = directory + "/" + name + ".jpeg"
+
     if os.path.exists(path):
+      duplicates += 1
       continue
 
     pic = requests.get(url, allow_redirects=True)
 
     if globals.verbose:
       print(path)
+    else:
+      if (idx%50==0):
+          print()
+      print(".", end="", flush=True)
 
     open(path, 'wb').write(pic.content)
     pics.append(pic)
+    idx += 1
 
-  print("%d saved to %s" % (len(pics), directory))
+  print()
+  print("%d unique images saved to %s. Duplicates found: %d" %
+        (len(pics), directory, duplicates))
 
   if globals.zip_results:
     zip_images(directory)

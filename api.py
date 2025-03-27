@@ -105,8 +105,8 @@ def get_image_list_and_name(url):
     must_be_more = True
     passes = 1
     while must_be_more:
-      wait_time = 2
-      print("Found %d results, waiting for %d seconds before next query..." %
+      wait_time = 1
+      print("Found %d results, waiting %d second(s) before next query..." %
             (len(results), wait_time))
       time.sleep(wait_time)
       offset = limit * passes
