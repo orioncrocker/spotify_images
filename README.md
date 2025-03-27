@@ -37,7 +37,7 @@ python3 main.py https://open.spotify.com/playlist/13OSe3KLY2qnUrdP2Sv6j7
 Use the `-v` or `--verbose` flag to see what the program is doing in real time.
 
 ## Create a collage
-Use the `-c` or `--collage` collage flag to create a collage of the artwork downloaded.
+Use the `-c` or `--collage` flag to create a collage of the artwork downloaded.
 
 ```bash
 python3 main.py -vc https://open.spotify.com/playlist/13OSe3KLY2qnUrdP2Sv6j7
@@ -64,8 +64,17 @@ The resulting collage:
 
 ![Collage](examples/collage.jpeg)
 
+### Create a wallpaper
+A specific aspect ratio can be selected by modifying the `globals.py` file.
+`"16x9"` is the value shipped with the software.
+Other available aspect ratios include `"4x3"`, `"16x10"`, `"32x9"`.
+If you'd like to add specific aspect ratio, simply update the `ratio_by_resolution` table in `collage.py`.
+
+Use the `-w` or `--wallpaper` flag to create a wallpaper of the artwork downloaded.
+
+![Wallpaper](examples/wallpaper.png)
+
 ## Future features:
-I would love to be able to specify a width and height for the purposes of creating wallpapers.
-Additionally, a website that hosts this code via [Flask](https://flask.palletsprojects.com/en/1.1.x/) 
+A website that hosts this code via [Flask](https://flask.palletsprojects.com/en/1.1.x/) 
 would be ideal so that anyone could utilize this software without the hassle of installation and configuration.
 However if I'm going do that I may as well rewrite this program in Javascript and save myself some trouble.
