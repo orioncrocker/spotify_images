@@ -21,7 +21,7 @@ You can easily get both of these from the `pip` repository after you've set up a
 
 ```bash
 python3 -m venv env
-source env/vin/activate
+source env/bin/activate
 pip3 install -r requirements.txt
 ```
 
@@ -62,7 +62,7 @@ Collage saved as: results/src#15.jpeg
 ```
 The resulting collage:
 
-![Unleash The Archers Collage](examples/collage.jpeg)
+![Collage](examples/collage.jpeg)
 
 ## Future features:
 I would love to be able to specify a width and height for the purposes of creating wallpapers.
