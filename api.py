@@ -89,11 +89,13 @@ def query_playlist_api(url, limit, offset=0):
   return urls
 
 def get_image_list_and_name(url):
-  if 'artist' in url:
+  if 'spotify' not in url:
+    return [],""
+  elif 'artist' in url:
     limit = 50
     image_query = query_artist_api
     name_query = query_artist_name
-  if 'playlist' in url:
+  elif 'playlist' in url:
     limit = 100
     image_query = query_playlist_api
     name_query = query_playlist_name
