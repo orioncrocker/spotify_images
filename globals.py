@@ -10,3 +10,7 @@ verbose = 0
 user_dir = 0
 zip_results = 0
 spotify = None
+image_size = 640
+image_ext = ".png"
+wallpaper_ratio = "16:9"
+

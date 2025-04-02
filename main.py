@@ -16,7 +16,8 @@ def main():
 
   parse = argparse.ArgumentParser(description='Spotify image gatherer and creator of collages')
   parse.add_argument('url', nargs='?')
-  parse.add_argument('-c', '--collage', action='count', default=0, help='Create a collage out of images gathered from "playlist" or "artist" argument.')
+  parse.add_argument('-c', '--collage', action='count', default=0, help='Create a collage out of images gathered from Spotify url results')
+  parse.add_argument('-w', '--wallpaper', action='count', default=0, help='Create a wallpaper out of images gathered from Spotify url results')
   parse.add_argument('-d', '--directory', dest='directory', type=str, help='Specify the a target directory to output results')
   parse.add_argument('-v', '--verbose', action='count', default=0, help='See the program working instead of just believing that it is working')
   parse.add_argument('-z', '--zip', action='count', default=0, help='Output the directory into a zip file')
@@ -29,10 +30,10 @@ def main():
   globals.user_dir = args.directory
   globals.verbose = args.verbose
   globals.zip_results = args.zip
-  
+
   directory = images.get_images(args.url)
-  if args.collage:
-    collage.make_collage(directory)
+  if args.collage or args.wallpaper:
+    collage.make_collage(directory, args.wallpaper)
 
 
 if __name__ == '__main__':
